@@ -3,6 +3,8 @@ interface Book {
   desc: string;
   cover_img: string;
   book_link: string;
+  video_link: string;
+  audio_link: string;
   author: string;
 }
 
@@ -12,6 +14,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695155976/kehila-books-cover/portada-estudios-de-torah-819x1024_fyfkja.jpg",
     book_link: "/assets/books/estudios-torah.pdf",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -19,6 +23,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157357/kehila-books-cover/liberacion-cover_ysvsvk.jpg",
     book_link: "https://tinyurl.com/gypliberdem",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -26,6 +32,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157219/kehila-books-cover/talmid-cover_m5emdx.jpg",
     book_link: "https://tinyurl.com/pasotalmid",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -33,6 +41,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157240/kehila-books-cover/quien-coverjpg_z6jq91.jpg",
     book_link: "https://tinyurl.com/YHMespanol",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -40,6 +50,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157275/kehila-books-cover/salvo-cover_oplusg.jpg",
     book_link: "https://tinyurl.com/20caractgyp",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -47,6 +59,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157255/kehila-books-cover/aprendiendo-cover_qsosxp.jpg",
     book_link: "https://tinyurl.com/aprendvivirgyp",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   },
   {
@@ -54,6 +68,8 @@ export const books: Book[] = [
     desc: "",
     cover_img: "https://res.cloudinary.com/dnjbeodgl/image/upload/v1695157255/kehila-books-cover/aprendiendo-cover_qsosxp.jpg",
     book_link: "https://tinyurl.com/aprendvivirgyp",
+    video_link: "",
+    audio_link: "",
     author: "Dr. Javier Palacios Celorio"
   }
 ]
