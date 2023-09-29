@@ -1,0 +1,51 @@
+---
+import BookCard from "../components/BookCard.astro";
+import { SearchInput } from "../components/search/search";
+import Layout from "../layouts/Layout.astro";
+
+import { books } from "../utility/Books"
+---
+
+<Layout title="Libros">
+  <section class="books-content">
+    <h2>¡Estudia Torah donde quiera que vayas!</h2>
+    <p>📚Descarga los libros a tu celular pulsando el enlace junto de cada titulo:</p>
+    <SearchInput client:idle />
+  </section>
+  <section class="books-list">
+    <ul>
+      {books.map(book => (
+        <BookCard title={book.title} desc={book.desc} author={book.author} book_link={book.book_link} cover_book={book.cover_img} />
+      ))}
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .books-content {
+    padding: 5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin: auto 0;
+  }.books-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .books-list {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  ul {
+    padding: 0 2em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    justify-content: center;
+  }
+</style>
