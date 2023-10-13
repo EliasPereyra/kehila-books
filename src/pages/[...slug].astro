@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { bookTitles } from "../utility/Books";
+
+  export async function getStaticPaths () {
+
+    return bookTitles.map(({slug, title, text}) => {
+      return {
+        params: {slug},
+        props: {title, text},
+      }
+    });
+  };
+
+  const { title, text } = Astro.props
+---
+
+<Layout title={title}>
+  <h1>{title}</h1>
+</Layout>
