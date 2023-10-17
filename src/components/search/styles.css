@@ -1,6 +1,22 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .input {
   padding: 1em;
   border-radius: 9px;
   border: #aaa solid 0.8px;
   width: 30em;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  color: var(--black);
+  opacity: .9;
+  transition: opacity .1s ease-in;
+}.tags:hover {
+  opacity: 1;
 }
