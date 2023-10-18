@@ -1,20 +1,105 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import { bookTitles } from "../utility/Books";
+
+import { books } from "../utility/Books";
+
+import DownloadIcon from "../imgs/icons/download-square.svg"
+import ShareIcon from "../imgs/icons/share.svg"
+import VideoIcon from "../imgs/icons/youtube.svg"
+import AudioIcon from "../imgs/icons/audio.svg"
 
   export async function getStaticPaths () {
 
-    return bookTitles.map(({slug, title, text}) => {
+    return books.map(({slug, title, desc, book_link, author, cover_img }) => {
       return {
         params: {slug},
-        props: {title, text},
+        props: {title, author, desc, cover_img},
       }
     });
   };
 
-  const { title, text } = Astro.props
+  const { title, author, desc, book_link, cover_img } = Astro.props
 ---
 
 <Layout title={title}>
-  <h1>{title}</h1>
+  <div class="book-container">
+    <div>
+      <a class="go-back-btn" href="/books">Ir atrás</a>
+    </div>
+    <article class="book-container__section">
+      <Image src={cover_img} alt={title} width="250" height="400" />
+    <section class="book-container__content">
+      <h3>{title}</h3>
+      <p>{author}</p>
+      <p>{desc}</p>
+      <div class="links">
+        <div class="links__first-col">
+          <a class="link" href={book_link}><Image width="20" height="20" src={DownloadIcon} alt="Icono de descargar" /> Descargar</a>
+          <a class="link"><Image width="20" height="20" src={ShareIcon} alt="Icono para compartir" /> Compartir</a>
+        </div>
+        <div class="links__second-col">
+          <a class="link"><Image width="20" height="20" src={VideoIcon} alt="Icono para ver video" />Vídeo</a>
+          <a class="link"><Image width="20" height="20" src={AudioIcon} alt="Icono para escuchar audio" /> Audio</a>
+        </div>
+      </div>
+    </section>
+    </article>
+  </div>
 </Layout>
+
+<style>
+  .book-container {
+    padding: 6em 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+  }
+
+  .book-container .go-back-btn {
+    color: #ddd;
+    padding: .7em 1em;
+    border-radius: 17px;
+    background-color: #a23;
+    font-weight: bold;
+  }
+
+  .book-container img {
+    border-radius: 7px;
+  }
+
+  .book-container__section {
+    display: flex;
+    gap: 5em;
+  }
+
+  .book-container__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 75ch;
+  }
+
+  .links {
+    display: flex;
+    gap: 10px;
+  }
+
+  .links__first-col, .links__second-col {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .links .link {
+    background: var(--primary-color-gradient);
+    padding: .5em .9em;
+    font-size: .87rem;
+    font-weight: 500;
+    border-radius: 22px;
+    color: var(--black);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+</style>
