@@ -1,12 +1,8 @@
 ---
   import { Image } from "astro:assets"
 
-  import DownloadIcon from "../imgs/icons/download-square.svg"
-  import ShareIcon from "../imgs/icons/share.svg"
-  import VideoIcon from "../imgs/icons/youtube.svg"
-  import AudioIcon from "../imgs/icons/audio.svg"
-
   interface Props {
+    slug: string;
     title: string;
     desc: string;
     cover_book: string;
@@ -14,66 +10,45 @@
     book_link: string;
   }
   
-  const {title, desc, cover_book, author, book_link} = Astro.props
+  const {slug, title, desc, cover_book, author, book_link} = Astro.props
 ---
 
 <!-- Implementar View transitions -->
 <article>
-  <h3>{title}</h3>
-  <p>{desc}</p>
-  <Image width="200" height="300" src={cover_book} alt=`Portada del libro ${title}`  />
+  <h3 class="book-card__title">{title}</h3>
+  <a class="book-card__btn" href={`/${slug}`}>
+    <Image width="200" height="300" src={cover_book} alt=`Portada del libro ${title}`  />
+  </a>
   <small><strong>Author: </strong> {author}</small>
-  <div class="links">
-    <div class="links__first-col">
-      <a href={book_link}><Image width="20" height="20" src={DownloadIcon} alt="Icono de descargar" /> Descargar libro</a>
-    <a><Image width="20" height="20" src={ShareIcon} alt="Icono para compartir" /> Compartir</a>
-    </div>
-    <div class="links__second-col">
-      <a><Image width="20" height="20" src={VideoIcon} alt="Icono para compartir" />Vídeo</a>
-    <a><Image width="20" height="20" src={AudioIcon} alt="Icono para compartir" /> Audio</a>
-    </div>
-  </div>
+  
 </article>
 
 <style>
   article {
-    padding: 2em 2.5em;
+    padding: 1em 2.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     border-radius: 9px;
-    height: 35em;
     transition: box-shadow .2s ease-in-out;
-  }article:hover {
-    box-shadow: 0px 0px 10px 1px rgba(1,1,1,.1);
   }
 
-  article a {
-    background-color: var(--primary-color);
-    padding: .5em 1em;
-    font-weight: bold;
-    border-radius: 9px;
-    color: #111;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  .book-card__desc {
+    color: var(--black);
   }
 
-  article img {
+  .book-card__title {
+    color: var(--black);
+    text-align: center;
   }
 
-  .links {
-    display: flex;
-    gap: 10px;
-  }
-
-  .links__first-col, .links__second-col {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+  .book-card__btn img {
+    border-radius: 8px;
+    transform: scale(1);
+    transition: transform .2s ease-in-out;
+  }.book-card__btn img:hover {
+    transform: scale(1.1);
   }
 </style>
